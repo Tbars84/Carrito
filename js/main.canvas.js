@@ -4,38 +4,7 @@ var objFondo = { nombreUrl : "fondo.jpg", imagenOk : false };
 //objeto de referencia al keycode(codigo ASCII) de las letras
 var teclas = { UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39 };
 //Objetos de coordanadas donde se estrella el carro
-PosPrimerLimite = [ [425 , 400], [205 , 400] , [205 , 300] , [450 , 300] , [450 , 120] , [60 , 120] , [60 , 0]  ]
-
-var rangosRestringidos = {
-	DirY1: 410, DirY2: 300, DirY3: 450, DirY4: 265,DirY5: 155, DirY6: 125,
-		RaX1: 25, RaX2: 50, RaX3: 170,RaX4: 200, RaX5: 305, RaX6: 420,
-	DirX1: 200,DirX2: 170, DirX3: 50, DirX4: 270,
-		RaY1: 300, RaY2: 410, RaY3 : 160
-}
-
-var RangoX1 = []; var RangoX2 =[]; var RangoX3 =[]; RangoX4 = []; RangoX5 =[];
-for (var i = rangosRestringidos.RaX1; i <= rangosRestringidos.RaX2; i++ ) {
-	RangoX1.push(i);
-};
-for (var a = rangosRestringidos.RaX3; a <= rangosRestringidos.RaX4; a++) {
-	RangoX1.push(a);
-};
-for (var b = rangosRestringidos.RaY1; b <= rangosRestringidos.RaY2; b++) {
-	RangoX2.push(b);
-};
-for (var c = rangosRestringidos.DirY4; c <= rangosRestringidos.RaX5; c++) {
-	RangoX3.push(c);
-};
-for (var c = rangosRestringidos.RaX6; c <= rangosRestringidos.DirY3; c++) {
-	RangoX3.push(c);
-};
-for (var d = rangosRestringidos.RaX2; d <= rangosRestringidos.DirY3; d++) {
-	RangoX4.push(d);
-};
-for (var e = rangosRestringidos.RaY3; e <= rangosRestringidos.DirX4; e++) {
-	RangoX5.push(e);
-};
-
+var PosPrimerLimite, PosSegundoLimite, PosTercerLimite, PosCuartoLimite;
 
 //objeto de referencia al carro
 var Objcarro = function(x , y , nom)
@@ -45,13 +14,12 @@ var Objcarro = function(x , y , nom)
 	this.marca= nom,
 	this.carroOk = false
 }
-
+//
 function cargaImagen(){
 	var canvas = document.getElementById("dib");
 	lienzo = canvas.getContext("2d");
 	objFondo.imagen = new Image();
 	objFondo.imagen.src = objFondo.nombreUrl;
-
 	SpiderFerrari = new Objcarro(425,450,"488 Spider" );
 	posIniY = SpiderFerrari.y; posIniX = SpiderFerrari.x;
 		for (var i = 0; i < Object.keys(teclas).length; i++) {
@@ -66,12 +34,87 @@ function cargaImagen(){
 					document.addEventListener( "keydown", movimiento );
 
 				}
+
 }
+//
 function dibujar(ValFondo , ValCarro, CarroImg, CoorX , CoorY){
 	if (ValFondo == true && ValCarro == true) {
 		lienzo.drawImage( objFondo.imagen , 0,0 )
 		lienzo.drawImage( CarroImg , CoorX , CoorY );
 	};
+	dibujarLimites( )
+}
+function dibujarLimites( ){
+	//Valido las coordenadas de los limites segun array
+	
+	PosPrimerLimite =  [ [470 , 500], [470 , 420], [215 , 420] , [215 , 320] , [470 , 320] , [470 , 130] , [75 , 130] , [75 , 0] , [500 , 0] , [500 , 500] ];
+	PosSegundoLimite = [ [425 , 500], [425, 460] , [30, 460] , [30, 275], [280, 275], [280, 175], [30, 175], [30, 0], [0, 0], [0, 500] ]
+	PosTercerLimite = [ [320 , 175], [425, 175] , [425, 275] , [320, 275] ]
+	PosCuartoLimite = [ [70 , 420], [175, 420] , [175, 320] , [70, 320] ]
+	
+	lienzo.beginPath
+	lienzo.moveTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);
+	lienzo.lineTo(PosPrimerLimite[1][0] , PosPrimerLimite[1][1]);
+	lienzo.lineTo(PosPrimerLimite[2][0] , PosPrimerLimite[2][1]);
+	lienzo.lineTo(PosPrimerLimite[3][0] , PosPrimerLimite[3][1]);
+	lienzo.lineTo(PosPrimerLimite[4][0] , PosPrimerLimite[4][1]);
+	lienzo.lineTo(PosPrimerLimite[5][0] , PosPrimerLimite[5][1]);
+	lienzo.lineTo(PosPrimerLimite[6][0] , PosPrimerLimite[6][1]);
+	lienzo.lineTo(PosPrimerLimite[7][0] , PosPrimerLimite[7][1]);	
+	lienzo.lineTo(PosPrimerLimite[8][0] , PosPrimerLimite[8][1]);
+	lienzo.lineTo(PosPrimerLimite[9][0] , PosPrimerLimite[9][1]);
+	lienzo.lineTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);
+	lienzo.fillStyle = "rgba(255,255,255,0)";
+	lienzo.strokeStyle ="rgb(255,255,255)";
+	lienzo.closePath;
+	lienzo.stroke();
+	lienzo.fill();
+
+	lienzo.beginPath
+	lienzo.moveTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);
+	lienzo.lineTo(PosSegundoLimite[1][0] , PosSegundoLimite[1][1]);
+	lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);
+	lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);
+	lienzo.lineTo(PosSegundoLimite[3][0] , PosSegundoLimite[3][1]);
+	lienzo.lineTo(PosSegundoLimite[4][0] , PosSegundoLimite[4][1]);
+	lienzo.lineTo(PosSegundoLimite[5][0] , PosSegundoLimite[5][1]);
+	lienzo.lineTo(PosSegundoLimite[6][0] , PosSegundoLimite[6][1]);
+	lienzo.lineTo(PosSegundoLimite[7][0] , PosSegundoLimite[7][1]);
+	lienzo.lineTo(PosSegundoLimite[8][0] , PosSegundoLimite[8][1]);
+	lienzo.lineTo(PosSegundoLimite[9][0] , PosSegundoLimite[9][1]);
+	lienzo.lineTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);
+	lienzo.fillStyle = "rgba(255,255,255,0)";
+	lienzo.strokeStyle ="rgb(255,255,255)";
+	lienzo.stroke();
+	lienzo.closePath;	
+	lienzo.fill();
+
+	lienzo.beginPath
+	lienzo.moveTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);
+	lienzo.lineTo(PosTercerLimite[1][0] , PosTercerLimite[1][1]);
+	lienzo.lineTo(PosTercerLimite[2][0] , PosTercerLimite[2][1]);
+	lienzo.lineTo(PosTercerLimite[3][0] , PosTercerLimite[3][1]);
+	lienzo.lineTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);
+	lienzo.fillStyle = "rgba(255,255,255,0)";
+	lienzo.strokeStyle ="rgb(255,255,255)";
+	lienzo.stroke();
+	lienzo.closePath;	
+	lienzo.fill();
+
+	lienzo.beginPath
+	lienzo.moveTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);
+	lienzo.lineTo(PosCuartoLimite[1][0] , PosCuartoLimite[1][1]);
+	lienzo.lineTo(PosCuartoLimite[2][0] , PosCuartoLimite[2][1]);
+	lienzo.lineTo(PosCuartoLimite[3][0] , PosCuartoLimite[3][1]);
+	lienzo.lineTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);
+	lienzo.fillStyle = "rgba(255,255,255,0)";
+	lienzo.strokeStyle ="rgb(255,255,255)";
+	lienzo.stroke();
+	lienzo.closePath;
+	lienzo.fill();
+
+
+
 }
 //Funcion que me permitemanejar el carro con las teclas up - left - right - down
 function movimiento(teclado){
@@ -106,51 +149,52 @@ function movimiento(teclado){
 	}
 
 		//CONDICIONALES CON ARRAYS PARA CONDUCIR SOLO EN EL CAMINO
-		console.log(SpiderFerrari.x);
-		
+		//console.log(SpiderFerrari.x +" "+ PosPrimerLimite[2][0]);	
+
 		if (SpiderFerrari.y == rangosRestringidos.DirY1) {
-			rangoViaY1(RangoX1, SpiderFerrari.x);
+			//rangoViaY1(RangoX1, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.y == rangosRestringidos.DirY2) {
-			rangoViaY1(RangoX1, SpiderFerrari.x);
+			//rangoViaY1(RangoX1, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.y == rangosRestringidos.DirY3) {
-			rangoViaY1(RangoX1, SpiderFerrari.x);
+			//rangoViaY1(RangoX1, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.y == rangosRestringidos.DirY4) {
-			rangoViaY1(RangoX3, SpiderFerrari.x);
+			//rangoViaY1(RangoX3, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.y == rangosRestringidos.DirY5) {
-			rangoViaY1(RangoX3, SpiderFerrari.x);
+			//rangoViaY1(RangoX3, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.y == rangosRestringidos.DirY6) {
-			rangoViaX1(RangoX4, SpiderFerrari.x);
+			//rangoViaX1(RangoX4, SpiderFerrari.x);
 		};
 		if (SpiderFerrari.x == rangosRestringidos.DirX1) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX2 , SpiderFerrari.y)
+			//rangoViaX1(RangoX2 , SpiderFerrari.y)
 		};
 		if (SpiderFerrari.x == rangosRestringidos.DirX2) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX2 , SpiderFerrari.y)							
+			//rangoViaX1(RangoX2 , SpiderFerrari.y)							
 		};
 		if (SpiderFerrari.x == rangosRestringidos.DirX3) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX2 , SpiderFerrari.y)							
+			//rangoViaX1(RangoX2 , SpiderFerrari.y)							
 		};
 		if (SpiderFerrari.x == rangosRestringidos.DirY4) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX5 , SpiderFerrari.y)
+			//rangoViaX1(RangoX5 , SpiderFerrari.y)
 		};
 		if (SpiderFerrari.x == rangosRestringidos.DirY2) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX5 , SpiderFerrari.y)
+			//rangoViaX1(RangoX5 , SpiderFerrari.y)
 		};
 		if (SpiderFerrari.x == rangosRestringidos.RaX6) {
 			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			rangoViaX1(RangoX5 , SpiderFerrari.y)
+			//rangoViaX1(RangoX5 , SpiderFerrari.y)
 		};
-		/*	function rangoViaY1(Rango, Busc){
+		/*
+			function rangoViaY1(Rango, Busc){
 				var index = Rango.indexOf(Busc);
 				if (index == -1) {
 					reiniciaDibujo()
@@ -162,9 +206,11 @@ function movimiento(teclado){
 					reiniciaDibujo()
 				};
 			}
+			
 			function reiniciaDibujo(){
 					SpiderFerrari.x = posIniX;
 					SpiderFerrari.y = posIniY;
 					dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , SpiderFerrari.x , SpiderFerrari.y );
-			}*/
+			}
+		*/
 }
