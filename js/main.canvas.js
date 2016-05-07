@@ -20,7 +20,7 @@ function cargaImagen(){
 	lienzo = canvas.getContext("2d");
 	objFondo.imagen = new Image();
 	objFondo.imagen.src = objFondo.nombreUrl;
-	SpiderFerrari = new Objcarro(425,450,"488 Spider" );
+	SpiderFerrari = new Objcarro(430,450,"488 Spider" );
 	posIniY = SpiderFerrari.y; posIniX = SpiderFerrari.x;
 		for (var i = 0; i < Object.keys(teclas).length; i++) {
 			SpiderFerrari["img"+i] = new Image();
@@ -45,172 +45,87 @@ function dibujar(ValFondo , ValCarro, CarroImg, CoorX , CoorY){
 	dibujarLimites( )
 }
 function dibujarLimites( ){
-	//Valido las coordenadas de los limites segun array
-	
-	PosPrimerLimite =  [ [470 , 500], [470 , 420], [215 , 420] , [215 , 320] , [470 , 320] , [470 , 130] , [75 , 130] , [75 , 0] , [500 , 0] , [500 , 500] ];
+	//Valido las coordenadas de los limites de cada canvas para crear los array de poscisiones
+	PosPrimerLimite =  [ [450 , 500], [450 , 420], [200 , 420] , [200 , 300] , [450 , 300] , [450 , 130] , [75 , 130] , [75 , 0] , [500 , 0] , [500 , 500] ];
 	PosSegundoLimite = [ [425 , 500], [425, 460] , [30, 460] , [30, 275], [280, 275], [280, 175], [30, 175], [30, 0], [0, 0], [0, 500] ]
-	PosTercerLimite = [ [320 , 175], [425, 175] , [425, 275] , [320, 275] ]
-	PosCuartoLimite = [ [70 , 420], [175, 420] , [175, 320] , [70, 320] ]
-	
-	lienzo.beginPath
-	lienzo.moveTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);
-	lienzo.lineTo(PosPrimerLimite[1][0] , PosPrimerLimite[1][1]);
-	lienzo.lineTo(PosPrimerLimite[2][0] , PosPrimerLimite[2][1]);
-	lienzo.lineTo(PosPrimerLimite[3][0] , PosPrimerLimite[3][1]);
-	lienzo.lineTo(PosPrimerLimite[4][0] , PosPrimerLimite[4][1]);
-	lienzo.lineTo(PosPrimerLimite[5][0] , PosPrimerLimite[5][1]);
-	lienzo.lineTo(PosPrimerLimite[6][0] , PosPrimerLimite[6][1]);
-	lienzo.lineTo(PosPrimerLimite[7][0] , PosPrimerLimite[7][1]);	
-	lienzo.lineTo(PosPrimerLimite[8][0] , PosPrimerLimite[8][1]);
-	lienzo.lineTo(PosPrimerLimite[9][0] , PosPrimerLimite[9][1]);
-	lienzo.lineTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);
-	lienzo.fillStyle = "rgba(255,255,255,0)";
-	lienzo.strokeStyle ="rgb(255,255,255)";
-	lienzo.closePath;
-	lienzo.stroke();
-	lienzo.fill();
-
-	lienzo.beginPath
-	lienzo.moveTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);
-	lienzo.lineTo(PosSegundoLimite[1][0] , PosSegundoLimite[1][1]);
-	lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);
-	lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);
-	lienzo.lineTo(PosSegundoLimite[3][0] , PosSegundoLimite[3][1]);
-	lienzo.lineTo(PosSegundoLimite[4][0] , PosSegundoLimite[4][1]);
-	lienzo.lineTo(PosSegundoLimite[5][0] , PosSegundoLimite[5][1]);
-	lienzo.lineTo(PosSegundoLimite[6][0] , PosSegundoLimite[6][1]);
-	lienzo.lineTo(PosSegundoLimite[7][0] , PosSegundoLimite[7][1]);
-	lienzo.lineTo(PosSegundoLimite[8][0] , PosSegundoLimite[8][1]);
-	lienzo.lineTo(PosSegundoLimite[9][0] , PosSegundoLimite[9][1]);
-	lienzo.lineTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);
-	lienzo.fillStyle = "rgba(255,255,255,0)";
-	lienzo.strokeStyle ="rgb(255,255,255)";
-	lienzo.stroke();
-	lienzo.closePath;	
-	lienzo.fill();
-
-	lienzo.beginPath
-	lienzo.moveTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);
-	lienzo.lineTo(PosTercerLimite[1][0] , PosTercerLimite[1][1]);
-	lienzo.lineTo(PosTercerLimite[2][0] , PosTercerLimite[2][1]);
-	lienzo.lineTo(PosTercerLimite[3][0] , PosTercerLimite[3][1]);
-	lienzo.lineTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);
-	lienzo.fillStyle = "rgba(255,255,255,0)";
-	lienzo.strokeStyle ="rgb(255,255,255)";
-	lienzo.stroke();
-	lienzo.closePath;	
-	lienzo.fill();
-
-	lienzo.beginPath
-	lienzo.moveTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);
-	lienzo.lineTo(PosCuartoLimite[1][0] , PosCuartoLimite[1][1]);
-	lienzo.lineTo(PosCuartoLimite[2][0] , PosCuartoLimite[2][1]);
-	lienzo.lineTo(PosCuartoLimite[3][0] , PosCuartoLimite[3][1]);
-	lienzo.lineTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);
-	lienzo.fillStyle = "rgba(255,255,255,0)";
-	lienzo.strokeStyle ="rgb(255,255,255)";
-	lienzo.stroke();
-	lienzo.closePath;
-	lienzo.fill();
-
-
-
+	PosTercerLimite = [ [300 , 175], [425, 175] , [425, 275] , [300, 275] ]
+	PosCuartoLimite = [ [55 , 420], [170, 420] , [170, 300] , [55, 300] ]
+	//Establezco los limites en X para establecer los limites de la carretera
+	LimitesenEjeX = [  450,400,300,270,200,170,55,30 ];
+	/*
+	lienzo.beginPath;lienzo.moveTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);lienzo.lineTo(PosPrimerLimite[1][0] , PosPrimerLimite[1][1]);lienzo.lineTo(PosPrimerLimite[2][0] , PosPrimerLimite[2][1]);lienzo.lineTo(PosPrimerLimite[3][0] , PosPrimerLimite[3][1]);lienzo.lineTo(PosPrimerLimite[4][0] , PosPrimerLimite[4][1]);lienzo.lineTo(PosPrimerLimite[5][0] , PosPrimerLimite[5][1]);lienzo.lineTo(PosPrimerLimite[6][0] , PosPrimerLimite[6][1]);lienzo.lineTo(PosPrimerLimite[7][0] , PosPrimerLimite[7][1]);	lienzo.lineTo(PosPrimerLimite[8][0] , PosPrimerLimite[8][1]);lienzo.lineTo(PosPrimerLimite[9][0] , PosPrimerLimite[9][1]);lienzo.lineTo(PosPrimerLimite[0][0] , PosPrimerLimite[0][1]);lienzo.fillStyle = "rgba(255,255,255,0)";lienzo.strokeStyle ="rgb(255,255,255)";lienzo.closePath;lienzo.stroke();lienzo.fill();
+	lienzo.beginPath;lienzo.moveTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);lienzo.lineTo(PosSegundoLimite[1][0] , PosSegundoLimite[1][1]);lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);lienzo.lineTo(PosSegundoLimite[2][0] , PosSegundoLimite[2][1]);lienzo.lineTo(PosSegundoLimite[3][0] , PosSegundoLimite[3][1]);lienzo.lineTo(PosSegundoLimite[4][0] , PosSegundoLimite[4][1]);lienzo.lineTo(PosSegundoLimite[5][0] , PosSegundoLimite[5][1]);lienzo.lineTo(PosSegundoLimite[6][0] , PosSegundoLimite[6][1]);lienzo.lineTo(PosSegundoLimite[7][0] , PosSegundoLimite[7][1]);lienzo.lineTo(PosSegundoLimite[8][0] , PosSegundoLimite[8][1]);lienzo.lineTo(PosSegundoLimite[9][0] , PosSegundoLimite[9][1]);lienzo.lineTo(PosSegundoLimite[0][0] , PosSegundoLimite[0][1]);lienzo.fillStyle = "rgba(255,255,255,0)";lienzo.strokeStyle ="rgb(255,255,255)";lienzo.stroke();lienzo.closePath;lienzo.fill();
+	lienzo.beginPath;lienzo.moveTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);lienzo.lineTo(PosTercerLimite[1][0] , PosTercerLimite[1][1]);lienzo.lineTo(PosTercerLimite[2][0] , PosTercerLimite[2][1]);lienzo.lineTo(PosTercerLimite[3][0] , PosTercerLimite[3][1]);lienzo.lineTo(PosTercerLimite[0][0] , PosTercerLimite[0][1]);lienzo.fillStyle = "rgba(255,255,255,0)";lienzo.strokeStyle ="rgb(255,255,255)";lienzo.stroke();lienzo.closePath;	lienzo.fill();
+	lienzo.beginPath;lienzo.moveTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);lienzo.lineTo(PosCuartoLimite[1][0] , PosCuartoLimite[1][1]);lienzo.lineTo(PosCuartoLimite[2][0] , PosCuartoLimite[2][1]);lienzo.lineTo(PosCuartoLimite[3][0] , PosCuartoLimite[3][1]);lienzo.lineTo(PosCuartoLimite[0][0] , PosCuartoLimite[0][1]);lienzo.fillStyle = "rgba(255,255,255,0)";lienzo.strokeStyle ="rgb(255,255,255)";lienzo.stroke();lienzo.closePath;lienzo.fill();
+	*/
 }
-//Funcion que me permitemanejar el carro con las teclas up - left - right - down
 function movimiento(teclado){
+	//Eventos del cursor para manejar el carro
 	Evteclado = teclado.keyCode;
  	if (Evteclado == teclas.UP) {
 		SpiderFerrari.y = SpiderFerrari.y -5; 
 		dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , SpiderFerrari.x , SpiderFerrari.y );
-		if(SpiderFerrari.y <= -50){
-			reiniciaDibujo()								
-		}
 	};
 	if (Evteclado == teclas.DOWN) {
 		SpiderFerrari.y = SpiderFerrari.y +5; 
 		dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img1 , SpiderFerrari.x , SpiderFerrari.y );
-		if(SpiderFerrari.y >= 500){
-			reiniciaDibujo()								
-		}
 	};
 	if (Evteclado == teclas.LEFT) {
 		SpiderFerrari.x = SpiderFerrari.x -5; 
 		dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img2 , SpiderFerrari.x , SpiderFerrari.y );
-		if(SpiderFerrari.x <= 25){
-			reiniciaDibujo()								
-		}
 	};
 	if (Evteclado == teclas.RIGHT) {
 		SpiderFerrari.x = SpiderFerrari.x +5;
 		dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img3 , SpiderFerrari.x , SpiderFerrari.y );
-		if(SpiderFerrari.x >= 445){
-			reiniciaDibujo()								
-		}
 	}
+		// CONFIGURO LOS LIMITES DE LA CARRETERA DESDE X
+		if (SpiderFerrari.x >= LimitesenEjeX[0] ) {
+				reiniciaDibujo();
+		};
+		if (SpiderFerrari.x <= LimitesenEjeX[1] ) {
+			if (( SpiderFerrari.y >= 440 && SpiderFerrari.y <= 500 ) ) {
+				reiniciaDibujo();
+			};			
+		};
+		if ( SpiderFerrari.x >= LimitesenEjeX[2] && SpiderFerrari.x <= LimitesenEjeX[1]) {
+			if ((SpiderFerrari.y >= 165 && SpiderFerrari.y <= 270)) {
+				console.log(SpiderFerrari.x)
+				reiniciaDibujo();
+			};
+		};
+		if ( SpiderFerrari.x <= LimitesenEjeX[3]) {
+			if ((SpiderFerrari.y >= 155 && SpiderFerrari.y <= 270)) {
+				reiniciaDibujo();
+			};
+		};
+		if ( SpiderFerrari.x >= LimitesenEjeX[4]) {
+			if ((SpiderFerrari.y >= 300 && SpiderFerrari.y <= 420)) {
+				reiniciaDibujo();
+			};
+		};
+		if ( SpiderFerrari.x <= LimitesenEjeX[5] && SpiderFerrari.x >= LimitesenEjeX[6]) {
+			if ((SpiderFerrari.y >= 300 && SpiderFerrari.y <= 420)) {
+				reiniciaDibujo();
+			};
+		};
+		if (SpiderFerrari.x >= LimitesenEjeX[6]) {
+			if ((SpiderFerrari.y >= 0 && SpiderFerrari.y <= 130)) {
+				reiniciaDibujo();
+			};
+		};
+		if ( SpiderFerrari.x <= LimitesenEjeX[7]) {
+				reiniciaDibujo();
+		};
+		if (SpiderFerrari.y == 0 ) { 
+			reiniciaDibujo()
+		};
+		if (SpiderFerrari.y >= 500 ) { 
+			dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , 50 , 0 );
+		};		
 
-		//CONDICIONALES CON ARRAYS PARA CONDUCIR SOLO EN EL CAMINO
-		//console.log(SpiderFerrari.x +" "+ PosPrimerLimite[2][0]);	
-
-		if (SpiderFerrari.y == rangosRestringidos.DirY1) {
-			//rangoViaY1(RangoX1, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.y == rangosRestringidos.DirY2) {
-			//rangoViaY1(RangoX1, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.y == rangosRestringidos.DirY3) {
-			//rangoViaY1(RangoX1, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.y == rangosRestringidos.DirY4) {
-			//rangoViaY1(RangoX3, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.y == rangosRestringidos.DirY5) {
-			//rangoViaY1(RangoX3, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.y == rangosRestringidos.DirY6) {
-			//rangoViaX1(RangoX4, SpiderFerrari.x);
-		};
-		if (SpiderFerrari.x == rangosRestringidos.DirX1) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX2 , SpiderFerrari.y)
-		};
-		if (SpiderFerrari.x == rangosRestringidos.DirX2) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX2 , SpiderFerrari.y)							
-		};
-		if (SpiderFerrari.x == rangosRestringidos.DirX3) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX2 , SpiderFerrari.y)							
-		};
-		if (SpiderFerrari.x == rangosRestringidos.DirY4) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX5 , SpiderFerrari.y)
-		};
-		if (SpiderFerrari.x == rangosRestringidos.DirY2) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX5 , SpiderFerrari.y)
-		};
-		if (SpiderFerrari.x == rangosRestringidos.RaX6) {
-			//console.log(SpiderFerrari.x +" "+ SpiderFerrari.y);
-			//rangoViaX1(RangoX5 , SpiderFerrari.y)
-		};
-		/*
-			function rangoViaY1(Rango, Busc){
-				var index = Rango.indexOf(Busc);
-				if (index == -1) {
-					reiniciaDibujo()
-				};
-			}
-			function rangoViaX1(Rango, Busc){
-				var index = Rango.indexOf(Busc);
-				if (index != -1) {
-					reiniciaDibujo()
-				};
-			}
-			
-			function reiniciaDibujo(){
-					SpiderFerrari.x = posIniX;
-					SpiderFerrari.y = posIniY;
-					dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , SpiderFerrari.x , SpiderFerrari.y );
-			}
-		*/
+}
+function reiniciaDibujo(){
+		SpiderFerrari.x = posIniX;
+		SpiderFerrari.y = posIniY;
+		dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , SpiderFerrari.x , SpiderFerrari.y );
 }
