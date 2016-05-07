@@ -1,0 +1,5 @@
+ccf1cec Dibujo con canvas los limites para establecer en un array las directrices que van a mantener al carro dentro de la carretera
+b1daad7 Dibujo limites de la carretera en canvas para conocer sus coordenadas y almaceno los valores en array
+70388dc he sacado la funcion de movimiento del load del objeto
+54ec813 version 1.0 juego de carros con objetos de javascript
+c688664 Primera version del juego carrito

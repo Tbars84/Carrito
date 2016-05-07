@@ -120,7 +120,9 @@ function movimiento(teclado){
 			reiniciaDibujo()
 		};
 		if (SpiderFerrari.y >= 500 ) { 
-			dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img0 , 50 , 0 );
+			SpiderFerrari.x = 40;
+			SpiderFerrari.y = 10;
+			dibujar( objFondo.imagenOk , SpiderFerrari.carroOk, SpiderFerrari.img1 , SpiderFerrari.x , SpiderFerrari.y );
 		};		
 
 }
